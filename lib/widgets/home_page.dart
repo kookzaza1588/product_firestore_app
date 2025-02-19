@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:product_firestore_app/models/product_model.dart';
 import 'package:product_firestore_app/service/database.dart';
+import 'package:product_firestore_app/widgets/product.delete.dart';
 import 'package:product_firestore_app/widgets/product_edit.dart';
 import 'package:product_firestore_app/widgets/product_popup.dart'; // import หน้าแก้ไข
 
@@ -55,21 +56,40 @@ class _HomePageState extends State<HomePage> {
               return ListTile(
                 title: Text(product.productName),
                 subtitle: Text('Price: ${product.price}'),
-                trailing: IconButton(
-                  icon: const Icon(Icons.edit),
-                  onPressed: () async {
-                    // เปิดหน้า EditProductPage ในรูปแบบ Bottom Sheet
-                    bool? result = await showModalBottomSheet(
-                      isScrollControlled: true,
-                      context: context,
-                      builder: (context) => EditProductPage(product: product),
-                    );
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.edit),
+                      onPressed: () async {
+                        bool? result = await showModalBottomSheet(
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (context) =>
+                              EditProductPage(product: product),
+                        );
 
-                    // รีเฟรชข้อมูลเมื่อกลับมาจากหน้าแก้ไข
-                    if (result == true) {
-                      setState(() {});
-                    }
-                  },
+                        if (result == true) {
+                          setState(() {}); // รีเฟรช UI
+                        }
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.delete, color: Colors.red),
+                      onPressed: () async {
+                        bool? result = await showModalBottomSheet(
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (context) =>
+                              DeleteProductPage(product: product),
+                        );
+
+                        if (result == true) {
+                          setState(() {}); // รีเฟรช UI ถ้าลบสำเร็จ
+                        }
+                      },
+                    ),
+                  ],
                 ),
               );
             },

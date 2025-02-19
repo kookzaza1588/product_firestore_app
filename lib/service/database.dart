@@ -29,14 +29,15 @@ class Database {
     }
   }
 
-  Future<void> deleteProduct({required ProductModel product}) async{
-    var reference = FirebaseFirestore.instance.doc('product/${product.id}');
-    try {
-      await reference.delete();
-    } catch (e) {
-      rethrow;
-    }
+  Future<void> deleteProduct({required ProductModel product}) async {
+  var reference = FirebaseFirestore.instance.collection('product').doc(product.id);
+  try {
+    await reference.delete();
+  } catch (e) {
+    print('Error deleting product: $e');
+    rethrow;
   }
+}
 
   Future<void> updateProduct({required ProductModel product}) async {
   try {
