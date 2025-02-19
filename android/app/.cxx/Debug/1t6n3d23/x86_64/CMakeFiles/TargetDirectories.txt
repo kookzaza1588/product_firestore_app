@@ -1,0 +1,2 @@
+D:/android/work_11_product_filestore_app/product_firestore_app/android/app/.cxx/Debug/1t6n3d23/x86_64/CMakeFiles/edit_cache.dir
+D:/android/work_11_product_filestore_app/product_firestore_app/android/app/.cxx/Debug/1t6n3d23/x86_64/CMakeFiles/rebuild_cache.dir
