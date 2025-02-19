@@ -17,11 +17,11 @@ class ProductItem extends StatelessWidget {
             return ProductPopup(product: product);
           });
       },
-      // child: ListTile(
-      //   leading: Text(product.productName),
-      //   title: Text(product.price.toStringAsFixed(2), textAlign: TextAlign.right,),
-      //   trailing: const Icon(Icons.chevron_right),
-      // ),
+        child: ListTile(
+          leading: Text(product.productName),
+          title: Text(product.price.toStringAsFixed(2), textAlign: TextAlign.right,),
+          trailing: const Icon(Icons.chevron_right),
+        ),
     );
   }
 }

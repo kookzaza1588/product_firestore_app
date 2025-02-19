@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
               var product = products[index];
               return ListTile(
                 title: Text(product.productName),
-                subtitle: Text('Price: ${product.price}'),
+                subtitle: Text('ราคา: ${product.price}'),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
